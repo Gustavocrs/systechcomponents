@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
-    "storybook": "storybook dev -p 6006",
+    "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
