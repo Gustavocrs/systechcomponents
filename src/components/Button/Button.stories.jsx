@@ -26,3 +26,19 @@ Disabled.args = {
     cursor: "not-allowed",
   },
 };
+
+export const Custom = Template.bind({});
+Custom.args = {
+  children: "Custom",
+  onClick: () => {},
+  Disabled: false,
+  configObj: {
+    backgroundColor: "#719E4E",
+    fontColor: "#1E1E1E",
+    width: "120px",
+    height: "30px",
+    fontSize: "0.9rem",
+    hoverBackgroundColor: "#5b7c42",
+    hoverFontColor: "#fff",
+  },
+};
