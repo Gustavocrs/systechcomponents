@@ -1,2 +1,2 @@
-export * from "./components/Button/Button";
-export * from "./hooks/useApi/useApi";
+export {Button} from "./components/Button/Button";
+export {useApi} from "./hooks/useApi/useApi";
