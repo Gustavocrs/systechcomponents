@@ -2,7 +2,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 
-const useApi = (url) => {
+export function useApi(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,6 +23,6 @@ const useApi = (url) => {
   }, [url]);
 
   return {data, loading, error};
-};
+}
 
 export default useApi; // Certifique-se de que está exportando como default
