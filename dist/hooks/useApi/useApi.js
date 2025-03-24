@@ -2,7 +2,8 @@ import { slicedToArray as _slicedToArray, asyncToGenerator as _asyncToGenerator,
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function useApi(url) {
+function useApi(method, url) {
+  var requestData = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   var _useState = useState(null),
     _useState2 = _slicedToArray(_useState, 2),
     data = _useState2[0],
@@ -23,39 +24,66 @@ function useApi(url) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              _context.next = 3;
-              return axios.get(url);
-            case 3:
-              response = _context.sent;
-              setData(response.data);
-              _context.next = 10;
+              _context.t0 = method.toLowerCase();
+              _context.next = _context.t0 === "get" ? 4 : _context.t0 === "post" ? 8 : _context.t0 === "put" ? 12 : _context.t0 === "del" ? 16 : 20;
               break;
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-              setError(_context.t0);
+            case 4:
+              _context.next = 6;
+              return axios.get(url);
+            case 6:
+              response = _context.sent;
+              return _context.abrupt("break", 21);
+            case 8:
+              _context.next = 10;
+              return axios.post(url, requestData);
             case 10:
-              _context.prev = 10;
+              response = _context.sent;
+              return _context.abrupt("break", 21);
+            case 12:
+              _context.next = 14;
+              return axios.put(url, requestData);
+            case 14:
+              response = _context.sent;
+              return _context.abrupt("break", 21);
+            case 16:
+              _context.next = 18;
+              return axios["delete"](url, {
+                data: requestData
+              });
+            case 18:
+              response = _context.sent;
+              return _context.abrupt("break", 21);
+            case 20:
+              throw new Error("Método HTTP inválido");
+            case 21:
+              setData(response.data);
+              _context.next = 27;
+              break;
+            case 24:
+              _context.prev = 24;
+              _context.t1 = _context["catch"](0);
+              setError(_context.t1);
+            case 27:
+              _context.prev = 27;
               setLoading(false);
-              return _context.finish(10);
-            case 13:
+              return _context.finish(27);
+            case 30:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 7, 10, 13]]);
+        }, _callee, null, [[0, 24, 27, 30]]);
       }));
       return function fetchData() {
         return _ref.apply(this, arguments);
       };
     }();
     fetchData();
-  }, [url]);
+  }, [method, url, requestData]);
   return {
     data: data,
     loading: loading,
     error: error
   };
 }
- // Certifique-se de que está exportando como default
 
 export { useApi as default, useApi };
