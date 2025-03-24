@@ -47,7 +47,7 @@ export default App;
 ### Exemplo de Hook: useApi
 
 ```jsx
-import {useApi} from "systechdev";
+import {useApi} from "systech-components";
 
 export default function Home() {
   const {data, loading, error} = useApi(
