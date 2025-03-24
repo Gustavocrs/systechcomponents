@@ -2,7 +2,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 
-export function useApi(url) {
+export function useApi(method, url, requestData = null) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,23 @@ export function useApi(url) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
+        let response;
+        switch (method.toLowerCase()) {
+          case "get":
+            response = await axios.get(url);
+            break;
+          case "post":
+            response = await axios.post(url, requestData);
+            break;
+          case "put":
+            response = await axios.put(url, requestData);
+            break;
+          case "del":
+            response = await axios.delete(url, {data: requestData});
+            break;
+          default:
+            throw new Error("Método HTTP inválido");
+        }
         setData(response.data);
       } catch (error) {
         setError(error);
@@ -20,9 +36,9 @@ export function useApi(url) {
     };
 
     fetchData();
-  }, [url]);
+  }, [method, url, requestData]);
 
   return {data, loading, error};
 }
 
-export default useApi; // Certifique-se de que está exportando como default
+export default useApi;
