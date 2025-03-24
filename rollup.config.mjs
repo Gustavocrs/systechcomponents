@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 
 export default {
-  input: "src/index.js", // Ponto de entrada da biblioteca
+  input: "src/index.jsx", // Ponto de entrada da biblioteca
   output: {
     dir: "dist", // Saída como um diretório (em vez de um único arquivo)
     format: "esm", // Usar o formato ES Modules
