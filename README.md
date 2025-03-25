@@ -22,13 +22,13 @@ Uma biblioteca de componentes reutilizáveis e funções úteis para acelerar o 
 Para instalar a biblioteca, execute o seguinte comando:
 
 ```bash
-npm install systech-components
+npm install systechcomponents
 ```
 
 Ou, se estiver usando Yarn:
 
 ```bash
-yarn add systech-components
+yarn add systechcomponents
 ```
 
 ## Uso
@@ -37,7 +37,7 @@ yarn add systech-components
 
 ```jsx
 import React from "react";
-import {Button} from "systech-components";
+import {Button} from "systechcomponents";
 
 const App = () => <Button onClick={() => alert("Clique!")}>Clique Aqui</Button>;
 
@@ -47,7 +47,7 @@ export default App;
 ### Exemplo de Hook: useApi
 
 ```jsx
-import {useApi} from "systech-components";
+import {useApi} from "systechcomponents";
 
 export default function Home() {
   const {data, loading, error} = useApi(
